@@ -11,10 +11,10 @@ public class Rate extends RateDomainModel {
 	{
 		
 		double interestrate = RateDAL.getRate(creditScore);
-		double I = interestrate/1200;
+		double I = interestrate/((100)*12);
 		int months  = years*12;
-		double monthlypay = (-1)*FinanceLib.pmt(I,months,houseLoan,0,false);
+		double monthlypayRate = (-1)*FinanceLib.pmt(I,months,houseLoan,0,false);
 			
-		return monthlypay;
+		return monthlypayRate;
 	}
 }
