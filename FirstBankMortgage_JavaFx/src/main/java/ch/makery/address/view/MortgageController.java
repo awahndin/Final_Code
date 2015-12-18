@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 
 import java.text.DecimalFormat;
 import java.util.UUID;
@@ -45,31 +46,21 @@ public class MortgageController {
 	@FXML
 	private Button goButton;
 	
+	
     // Reference to the main application.
     private MainApp mainApp;
 
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
+  
     public MortgageController() {
     }
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
     
     @FXML
     private void initialize() {
 
     }
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
+
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
@@ -93,7 +84,7 @@ public class MortgageController {
 		int houseLoan = 0;
 		int housepayment = (int) ch.makery.address.model.Rate.getPayment(creditScore, houseLoan, term1);
     	
-    	if(housepayment <= income * 0.36 
+    	if(housepayment <= (income * 0.36) 
     			&& housepayment <= (income + (-1*Expense )) * 0.28) {
     		DecimalFormat deciValue = new DecimalFormat("1.23");
     		String Mortgage = deciValue.format(housepayment);

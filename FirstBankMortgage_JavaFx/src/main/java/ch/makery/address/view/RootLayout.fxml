@@ -21,8 +21,8 @@
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
+                  
                   </MenuItem>
-                 
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
@@ -30,13 +30,10 @@
                   
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
                </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Statistics">
-            
-          </Menu>
+ 
+          <Menu mnemonicParsing="false" text="Statistics">    
+        
           <Menu mnemonicParsing="false" text="Help">
-            
-          </Menu>
         </menus>
       </MenuBar>
    </top>
