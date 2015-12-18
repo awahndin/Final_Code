@@ -33,8 +33,6 @@ public class MortgageController {
 	@FXML
 	private Label lblmortgagePayment = new Label();
 	@FXML
-	private Label altPaymentLabel = new Label();
-	@FXML
 	private TextField txtIncome;
 	@FXML
 	private TextField txtExpense;
@@ -79,30 +77,34 @@ public class MortgageController {
     private void Mortgagecalculation() {
     	lblmortgagePayment.setVisible(false);
     	Double income = Double.parseDouble(this.txtIncome.getText());
-    	Double monthlyExpense = Double.parseDouble(this.txtExpense.getText());
+    	Double Expense = Double.parseDouble(this.txtExpense.getText());
     	int creditScore = Integer.parseInt(this.txtCreditScore.getText());
     	Double costOfHouse = Double.parseDouble(this.txtHouseCost.getText());
     	Double term = Double.parseDouble(this.cmbTerm.getValue().toString());
     	Double interestRate = RateDAL.getRate(creditScore);
     	
+    	int term1 = 0;
+        if (this.cmbTerm.getSelectionModel().getSelectedIndex() == 0){
+        	term1 = 15;
+        }
+        else if(this.cmbTerm.getSelectionModel().getSelectedIndex() == 1){
+        	term1 = 30;
+        }
+		int houseLoan = 0;
+		int housepayment = (int) ch.makery.address.model.Rate.getPayment(creditScore, houseLoan, term1);
     	
-    
-    	int houseLoan = 0;
-		int years = 0;
-		double housepayment = ch.makery.address.model.Rate.getPayment(creditScore, houseLoan, years);
-    	
-    	if(housepayment <= income * 0.36 && housepayment <= (income + (monthlyExpense * 2)) * 0.28) {
-    		DecimalFormat deciValue = new DecimalFormat("#.##");
+    	if(housepayment <= income * 0.36 
+    			&& housepayment <= (income + (-1*Expense )) * 0.28) {
+    		DecimalFormat deciValue = new DecimalFormat("1.23");
     		String Mortgage = deciValue.format(housepayment);
     		
-    		this.lblmortgagePayment.setText("This house is to much!");
+    		this.lblmortgagePayment.setText("This house is perfect!");
     		lblmortgagePayment.setVisible(true);
     		this.lblmortgagePayment.setText("You should pay" + Mortgage + "a month");
     	} else {
-    		this.lblmortgagePayment.setText("House Cost Too High");
-    		System.out.println("mortgage = " + housepayment);
-    		System.out.println("income * 0.36 = " + income * 0.36);
-    		System.out.println("(Income + Expenses) * 18% = " + (income + (monthlyExpense * 2)) * 0.18);
+    		this.lblmortgagePayment.setText("this house is way to much");
+    		System.out.println("Your mortgage payment must be less than" + income * 0.36);
+    		System.out.println("Your Mortgage payment must be less than" + (income + (-1)*Expense ) * 0.28);
     	}
  
    }

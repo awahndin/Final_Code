@@ -7,12 +7,12 @@ import domain.RateDomainModel;
 
 public class Rate extends RateDomainModel {
 	
-	public static double getPayment(int creditScore, int houseLoan, int years)
+	public static double getPayment(int creditScore, int houseLoan, int term)
 	{
 		
 		double interestrate = RateDAL.getRate(creditScore);
 		double I = interestrate/((100)*12);
-		int months  = years*12;
+		int months  = term*12;
 		double monthlypayRate = (-1)*FinanceLib.pmt(I,months,houseLoan,0,false);
 			
 		return monthlypayRate;

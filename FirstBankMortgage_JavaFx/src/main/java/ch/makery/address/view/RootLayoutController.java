@@ -5,6 +5,7 @@ import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import ch.makery.address.MainApp;
 
@@ -17,7 +18,7 @@ public class RootLayoutController {
         this.mainApp = mainApp;
     }
 
-
+    
     @FXML
     private void handleExit() {
         System.exit(0);
